@@ -1,14 +1,81 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import "../assets/css/login.css";
+import LoginAction from "../action";
+import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
+import { useAuth } from "../context/AuthContext";
 export const Login = () => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(LoginSchema),
+    defaultValues: {
+      email: "test@admin.com",
+      password: "admin123",
+    },
+  });
+  const formSubmit = (data: z.infer<typeof LoginSchema>) => {
+    LoginAction(data)
+      .then((res) => {
+        login(res.token);
+        toast.success("Login successful");
+        navigate("/dashboard");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
   return (
-    <div className="w-full h-screen">
+    <div className="w-full flex justify-center ">
       <div className="login-container">
-        <h1 className="text-2xl font-bold text-center">Login</h1>
-        <form className="flex flex-col gap-4">
-          <input type="text" placeholder="Username" className="input" />
-          <input type="password" placeholder="Password" className="input" />
-          <button className="btn">Login</button>
+        <form
+          className="flex flex-col gap-4 login-form"
+          onSubmit={handleSubmit(formSubmit)}
+        >
+          <h1 className="text-2xl font-bold text-center">Login</h1>
+          <div className="form-group">
+            <label htmlFor="username">Email</label>
+            <input
+              type="text"
+              placeholder="Enter your email"
+              className="input"
+              {...register("email")}
+            />
+            {errors.email && (
+              <span className="text-red-500">{errors.email.message}</span>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="input"
+              {...register("password")}
+            />
+            {errors.password && (
+              <span className="text-red-500">{errors.password.message}</span>
+            )}
+          </div>
+          <button className="btn" disabled={isSubmitting}>
+            {isSubmitting ? "Loading..." : "Login"}
+          </button>
         </form>
       </div>
     </div>
   );
 };
+const LoginSchema = z.object({
+  email: z.string().email({
+    message: "Invalid email",
+  }),
+  password: z.string().min(1, {
+    message: "Password is required",
+  }),
+});

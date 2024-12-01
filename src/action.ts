@@ -29,7 +29,9 @@ export async function GetSubscribers(): Promise<ISubscriber[]> {
 export async function GetSubscriber(id: number): Promise<ISubscriptionDetails> {
   return new Promise((resolve, reject) => {
     const subscriber = Subscriber.find((sub) => sub.id === id);
-    const subscription = subscriptions.filter((sub) => sub.id === id);
+    const subscription = subscriptions.filter(
+      (sub) => parseInt(sub.user_id) === id
+    );
     if (subscriber) {
       setTimeout(() => {
         resolve({ ...subscriber, subscription });

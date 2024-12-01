@@ -1,0 +1,35 @@
+.container{
+  width: 100%;
+  max-width: 1200px;
+}
+.h-full{
+  height: 100%;
+}
+.w-full{
+  width: 100%;
+}
+.h-screen{
+  height: 100vh;
+}
+.w-screen{
+  width: 100vw;
+}
+.flex{
+  display: flex;
+}
+.justify-center{
+  justify-content: center;
+}
+.items-center{
+  align-items: center;
+}
+.flex-col{
+  flex-direction: column;
+}
+.gap-4{
+  gap: 1rem;
+}
+.space-y-4{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

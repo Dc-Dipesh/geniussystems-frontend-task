@@ -1,0 +1,66 @@
+.table_container {
+  height: 76vh;
+  overflow-x: auto;
+  padding: 0px 20px;
+  margin-top: 10px;
+}
+.subscriber_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px;
+}
+
+.subscriber_table th {
+  background-color: #2c3e50;
+  color: #f2f2f2;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+.subscriber_table th:not(:first-child) {
+  min-width: 150px;
+}
+.subscriber_table td {
+  padding: 10px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.subscriber_table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.active {
+  background-color: #2ecc71;
+  color: #fff;
+}
+.inactive {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.spinner {
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #f3f3f3;
+  border-top-color: #3498db;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

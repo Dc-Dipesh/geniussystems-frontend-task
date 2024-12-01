@@ -22,3 +22,10 @@
   color: #fff;
   cursor: pointer;
 }
+.login-form .btn:hover {
+  background: #000000be;
+}
+.login-form .btn:disabled {
+  background: #333;
+  cursor: not-allowed;
+}

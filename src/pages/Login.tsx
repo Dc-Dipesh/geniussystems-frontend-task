@@ -2,17 +2,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import "../assets/css/login.css";
-import LoginAction from "../action";
+import { LoginAction } from "../action";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
 export const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -21,6 +23,7 @@ export const Login = () => {
     },
   });
   const formSubmit = (data: z.infer<typeof LoginSchema>) => {
+    setIsSubmitting(true);
     LoginAction(data)
       .then((res) => {
         login(res.token);
@@ -29,8 +32,12 @@ export const Login = () => {
       })
       .catch((err) => {
         toast.error(err.message);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
   };
+
   return (
     <div className="w-full flex justify-center ">
       <div className="login-container">

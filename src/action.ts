@@ -12,7 +12,7 @@ export default async function LoginAction(
           resolve({
             token: "1234567890",
           });
-        }, 1000);
+        }, 5000);
       });
     }
     throw new Error("Invalid email or password");

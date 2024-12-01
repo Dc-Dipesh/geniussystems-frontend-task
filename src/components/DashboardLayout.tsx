@@ -16,11 +16,11 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const Menus = [
     {
       name: "Analytics",
-      link: "/dashboard/",
+      link: "/dashboard",
     },
     {
-      name: "Users",
-      link: "/dashboard/user",
+      name: "Subscribers",
+      link: "/dashboard/subscribers",
     },
   ];
   return (
@@ -29,7 +29,6 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         isSidebarOpen ? "sidebar-open" : "sidebar-closed"
       }`}
     >
-      {/* Sidebar */}
       <aside className="sidebar">
         <h2>Dashboard</h2>
         <nav>
@@ -48,9 +47,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         </nav>
       </aside>
 
-      {/* Main Content */}
       <div className="main-content">
-        {/* Header */}
         <header className="header">
           <h1>Dashboard</h1>
           <button className="toggle-btn" onClick={toggleSidebar}>
@@ -58,7 +55,6 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           </button>
         </header>
 
-        {/* Content */}
         <main className="content">{children}</main>
       </div>
     </div>

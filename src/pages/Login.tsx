@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import "../assets/css/login.css";
-import LoginAction from "../action";
+import { LoginAction } from "../action";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";

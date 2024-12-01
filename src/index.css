@@ -23,9 +23,13 @@ body {
 .justify-center {
   justify-content: center;
 }
+.justify-between {
+  justify-content: space-between;
+}
 .items-center {
   align-items: center;
 }
+
 .flex-col {
   flex-direction: column;
 }
@@ -54,6 +58,17 @@ body {
 .form-group input:focus {
   outline: none;
   border-color: #00000093 !important;
+}
+.form-select {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+}
+.form-select select {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 2px solid #ccc;
 }
 .text-red-500 {
   color: #ff0000;

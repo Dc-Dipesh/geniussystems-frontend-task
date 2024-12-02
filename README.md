@@ -31,3 +31,11 @@ npm run dev
 ```
 
 This will start the Vite development server and you can view the application in your browser.
+
+## Application Features
+
+- **Protected Routing System:** The application includes a protected routing system to ensure that only authenticated users can access certain pages.
+
+- **Analytics Dashboard:** The dashboard provides insightful analytics with both bar charts and pie charts to visualize data effectively.
+
+- **Subscriber Page:** The subscriber page allows users to filter, sort, and search through different subscribers efficiently.

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../assets/css/DashboardLayout.css";
+import "../assets/css/dashboardLayout.css";
 import { Link, useLocation } from "react-router";
 
 interface DashboardLayoutProps {

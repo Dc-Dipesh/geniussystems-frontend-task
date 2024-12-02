@@ -19,10 +19,8 @@ const SubscriberDetail = () => {
       });
   }, []);
 
-  console.log(SubscriberDetail);
   return (
     <div className="subscriber-details">
-      {/* Header Section */}
       <header className="subscriber-header">
         <h1 className="subscriber-title">
           {SubscriberDetail?.first_name} {SubscriberDetail?.middle_name}{" "}
@@ -37,7 +35,6 @@ const SubscriberDetail = () => {
         </span>
       </header>
 
-      {/* General Details */}
       <section className="details-card">
         <h2 className="section-title">General Information</h2>
         <div className="details-grid">

@@ -41,3 +41,30 @@ export async function GetSubscriber(id: number): Promise<ISubscriptionDetails> {
     }
   });
 }
+
+export async function DashboardAnalytics(): Promise<any> {
+  const totalPackages = subscriptions.map((sub) => sub.package);
+  // remove duplicates
+  const uniquePackages = [...new Set(totalPackages)];
+  // get every package name with the total number of subscribers
+  const packageSubscribed = uniquePackages.map((pkg) => {
+    return {
+      package: pkg,
+      total: subscriptions.filter((sub) => sub.package === pkg).length,
+    };
+  });
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        totalSubscribers: Subscriber.length,
+        totalSubscriptions: subscriptions.length,
+        totalActiveSubscribers: Subscriber.filter((sub) => sub.active === "1")
+          .length,
+        totalInactiveSubscribers: Subscriber.filter((sub) => sub.active === "0")
+          .length,
+        totalPackages: uniquePackages.length,
+        packageSubscribed,
+      });
+    }, 1000);
+  });
+}

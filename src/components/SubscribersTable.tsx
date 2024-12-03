@@ -63,7 +63,7 @@ const SubscribersTable = ({
 
   return (
     <div>
-      <div className="flex justify-between gap-4 mb-4">
+      <div className="flex justify-between flex-wrap gap-4 mb-4">
         <div className="search-box">
           <input
             type="text"

@@ -11,7 +11,6 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { pathname } = useLocation();
   const { logout } = useAuth();
-  console.log(pathname);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };

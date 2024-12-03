@@ -7,7 +7,6 @@ import "../assets/css/subscriber.css";
 const Subscribers = () => {
   const [subscribers, setSubscribers] = useState<ISubscriber[]>([]);
   const [loading, setLoading] = useState(true);
-  console.log(subscribers);
   useEffect(() => {
     GetSubscribers()
       .then((data) => {

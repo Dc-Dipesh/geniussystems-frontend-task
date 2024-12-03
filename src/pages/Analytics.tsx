@@ -11,6 +11,7 @@ import {
 } from "chart.js";
 import "../assets/css/analytic.css";
 import { Bar, Pie } from "react-chartjs-2";
+import toast from "react-hot-toast";
 
 interface IAnalytics {
   totalSubscribers: number;
@@ -40,11 +41,10 @@ const Analytics = () => {
   useEffect(() => {
     DashboardAnalytics()
       .then((data) => {
-        console.log(data);
         setData(data);
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error.message);
       });
   }, []);
 
@@ -70,6 +70,7 @@ const Analytics = () => {
       </div>
       <div className="chart-container">
         <div className="pie-chart">
+          <h2>Subscriber Status</h2>
           <Pie
             data={{
               labels: ["Active", "Inactive"],
@@ -87,13 +88,14 @@ const Analytics = () => {
           />
         </div>
         <div className="bar-chart">
+          <h2>Subscribed Packages</h2>
           <Bar
             data={{
               labels: data?.packageSubscribed.map((pkg) => pkg.package),
               datasets: [
                 {
-                  label: "Values",
                   data: data?.packageSubscribed.map((pkg) => pkg.total),
+                  label: "Packages Subscribed",
                   backgroundColor: data?.packageSubscribed?.map(() => {
                     return `#${Math.floor(Math.random() * 16777215).toString(
                       16
@@ -104,7 +106,10 @@ const Analytics = () => {
                 },
               ],
             }}
-            options={{ responsive: true, maintainAspectRatio: false }}
+            options={{
+              responsive: true,
+              maintainAspectRatio: false,
+            }}
           />
         </div>
       </div>

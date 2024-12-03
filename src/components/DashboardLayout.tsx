@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../assets/css/dashboardLayout.css";
 import { Link, useLocation } from "react-router";
+import { useAuth } from "../context/AuthContext";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -9,6 +10,7 @@ interface DashboardLayoutProps {
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { pathname } = useLocation();
+  const { logout } = useAuth();
   console.log(pathname);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -44,6 +46,14 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
               </li>
             ))}
           </ul>
+          <button
+            className="btn-logout"
+            onClick={() => {
+              logout();
+            }}
+          >
+            Logout
+          </button>
         </nav>
       </aside>
 
